@@ -11,7 +11,7 @@ Text1
 Text2
 Text3
  */
-fun main() = runBlocking {
+fun main(): Unit = runBlocking {
     val res1 = GlobalScope.async {
         delay(1000L)
         "Text1"

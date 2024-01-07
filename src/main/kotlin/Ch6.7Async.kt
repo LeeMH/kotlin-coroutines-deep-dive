@@ -9,7 +9,7 @@ Deferred에는 작업이 끝나면 값을 리턴하는 await 메소드가 있다
 //1초후
 42
  */
-fun main() = runBlocking {
+fun main(): Unit = runBlocking {
     val resultDeferred: Deferred<Int> = GlobalScope.async {
         delay(1000L)
         42
