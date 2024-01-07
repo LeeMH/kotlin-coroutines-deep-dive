@@ -1,3 +1,5 @@
+package ch6
+
 import kotlin.concurrent.thread
 
 /*

@@ -1,9 +1,12 @@
+package ch8
+
 import kotlinx.coroutines.*
 
 
 fun main(): Unit = runBlocking {
     val job = Job()
 
+    // job이 실행되다가, 예외가 발생한 시점에 종료가 된다.
     launch(job) {
         repeat(5) { num ->
             delay(200)
@@ -13,7 +16,7 @@ fun main(): Unit = runBlocking {
 
     launch {
         delay(500)
-        job.complete()
+        job.completeExceptionally(Error("some error!!"))
     }
 
     job.join()
@@ -25,4 +28,6 @@ fun main(): Unit = runBlocking {
         delay(2000)
         println("will not be printed")
     }
+
+    println("done")
 }

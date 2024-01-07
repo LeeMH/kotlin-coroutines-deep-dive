@@ -1,3 +1,5 @@
+package ch8
+
 import kotlinx.coroutines.*
 
 suspend fun main(): Unit = coroutineScope {

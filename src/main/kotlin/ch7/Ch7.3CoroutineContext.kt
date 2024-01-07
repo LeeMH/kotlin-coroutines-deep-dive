@@ -1,4 +1,7 @@
+package ch7
+
 import kotlinx.coroutines.*
+import log
 
 /*
 부모의 컨텍스트는 자식에게 상속된다.

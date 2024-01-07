@@ -1,7 +1,9 @@
+package ch8
+
 import kotlinx.coroutines.*
 
 /*
-join 메소드를 통해 자식들을 기다린다.
+코루틴 컨텍스트의 job을 통해 자식 코루틴에 접근할수 있다.
 
 출력>
 // 1초후
@@ -11,17 +13,19 @@ job2
 All jobs are done
  */
 fun main(): Unit = runBlocking {
-    val job1 = launch {
+    launch {
         delay(1000)
         println("job1")
     }
 
-    val job2 = launch {
+    launch {
         delay(2000)
         println("job2")
     }
 
-    job1.join()
-    job2.join()
+    val children = coroutineContext[Job]?.children
+
+    println("Number of children: ${children?.count()}")
+    children?.forEach { it.join() }
     println("All jobs are done")
 }
